@@ -24,7 +24,7 @@ function getCity(city) {
 
     console.log(city)
 
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`, {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`, {
 
     method: "GET"
     })
@@ -34,6 +34,7 @@ function getCity(city) {
     .then((data) => {
         //console.log("weather: ", data)
         $("#cityName").text(data.name);
+        //$("#cityName").attr(src = "https://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png");
         $("#temp").text(`Temperature: ${data.main.temp} F`);
         $("#humid").text(`Humidity: ${data.main.humidity}%`);
         $("#wind").text(`Wind Speed: ${data.wind.speed} MPH`);
@@ -44,6 +45,8 @@ function getCity(city) {
         
         .then((response) => response.json())
         .then((uvData) => {
+            console.log(uvData)
+            $("#weatherIcon").attr("src", `https://openweathermap.org/img/wn/${uvData.current.weather[0].icon}@2x.png`)
             $("#index").text(`UV Index: ${uvData.current.uvi}`);
 
             if (uvData.current.uvi < 2) {
@@ -62,6 +65,11 @@ function getCity(city) {
         .then((dayForecast) => {
         
             console.log(dayForecast)
+
+        for (let index = 1; index <= 6; index++) {
+           const data = moment().add(1, 'days').calender()
+            
+        }
         })
         .catch((error) => {});
         
