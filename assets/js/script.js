@@ -30,6 +30,7 @@ function getCity(city) {
     })
     
     .then((response) => response.json())
+    // calls the data for the current day
     .then((data) => {
         console.log("weather: ", data)
         $("#cityName").text(data.name);
@@ -38,12 +39,23 @@ function getCity(city) {
         $("#wind").text(`Wind Speed: ${data.wind.speed} MPH`);
         
         
-        
+        // new fetch request to get uv index
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&units=imperial&appid=${apiKey}`)
         
         .then((response) => response.json())
         .then((data) => {
-            $("#index").text(`UV Index: ${data.current.uvi} UV`);
+            $("#index").text(`UV Index: ${data.current.uvi}`);
+
+            if (data.current.uvi < 2) {
+                $("#index").attr("class", " button is-success");
+            } else if (data.current.uvi < 4) {
+                $("#index").attr("class", " button is-warning");
+            } else if (data.current.uvi < 6) {
+                $("#index").attr("class", "button is-danger");
+            }
+
+        
+
             
             
         })
