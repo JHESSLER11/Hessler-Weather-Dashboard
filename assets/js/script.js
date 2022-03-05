@@ -1,18 +1,22 @@
 const apiKey = "56cd55bcb41fb1d5dd1158c24bb37cc0";
 const pastSearch = [];
 
-$(".searchBtn").on("submit", function(event) {
-    
-    event.preventDefault()
 
-    const city = $(".inputCity").val().trim()
+$("#search-container").on("submit", citySearch);
+
+
+function citySearch(event) {
+    event.preventDefault();
+
+    const city = $("#inputCity").val().trim()
+    $("#inputCity").val("");
     console.log(city)
     
     pastSearch.push(city);
 
     localStorage.setItem("Cities", city)
     
-})
+}
 
 
 
@@ -34,3 +38,4 @@ const getCity = city => {
 }
 
 getCity()
+
