@@ -14,13 +14,28 @@
     <header>
         <h1> Hessler Weather Dashboard</h1>
     </header>
-        <aside id="search-container">
-            <form>
-                <h2>Search for a City</h2>
-                <input type="text" placeholder="Search City" id="inputCity">
-                <button type="submit" id="searchBtn">Search</button>
-            </form>
+    <!-- Search container with search history -->
+        <aside id="aside-container">
+            <div id="serach-container">
+                <form>
+                    <h2>Search for a City</h2>
+                    <input type="text" placeholder="Search City" id="inputCity">
+                    <button type="submit" id="searchBtn">Search</button>
+                </form>
+            </div>
+            <div id="search-history"></div>
         </aside>
+        <!-- Current search, current weather -->
+        <div id="currentW-container">
+            <div id="weather-data">
+                <p id="temp">Temperature:</p>
+                <p id="humid">Humidity:</p>
+                <p id="wind">Wind Speed:</p>
+                <p id="index">Uv Index:</p>
+            </div>
+
+        </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="./assets/js/script.js"></script>
