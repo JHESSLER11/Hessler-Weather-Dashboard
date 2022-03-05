@@ -32,7 +32,7 @@ function getCity(city) {
     .then((response) => response.json())
     // calls the data for the current day
     .then((data) => {
-        console.log("weather: ", data)
+        //console.log("weather: ", data)
         $("#cityName").text(data.name);
         $("#temp").text(`Temperature: ${data.main.temp} F`);
         $("#humid").text(`Humidity: ${data.main.humidity}%`);
@@ -43,21 +43,25 @@ function getCity(city) {
         fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&units=imperial&appid=${apiKey}`)
         
         .then((response) => response.json())
-        .then((data) => {
-            $("#index").text(`UV Index: ${data.current.uvi}`);
+        .then((uvData) => {
+            $("#index").text(`UV Index: ${uvData.current.uvi}`);
 
-            if (data.current.uvi < 2) {
+            if (uvData.current.uvi < 2) {
                 $("#index").attr("class", " button is-success");
-            } else if (data.current.uvi < 4) {
+            } else if (uvData.current.uvi < 4) {
                 $("#index").attr("class", " button is-warning");
-            } else if (data.current.uvi < 6) {
+            } else if (uvData.current.uvi < 6) {
                 $("#index").attr("class", "button is-danger");
             }
-
+            
+        })
+        // fetching 5 day forecast
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&units=imperial&appid=${apiKey}`)
         
-
-            
-            
+        .then((response) => response.json())
+        .then((dayForecast) => {
+        
+            console.log(dayForecast)
         })
         .catch((error) => {});
         
@@ -66,5 +70,6 @@ function getCity(city) {
 
 }
 
-getCity()
+
+
 
