@@ -1,50 +1,28 @@
 const apiKey = "56cd55bcb41fb1d5dd1158c24bb37cc0";
 let pastSearch = []
 
-// JSON.parse(localStorage.getItem("cities")) 
-// if (!pastSearch) {
-//     pastSearch =[]
-// } 
-console.log(pastSearch)
-
 $("#aside-container").on("submit", citySearch);
 
-
+//handles the search
 function citySearch(event) {
     event.preventDefault();
-
     const city = $("#inputCity").val().trim()
     $("#inputCity").val("");
-    //pastSearch.push(city)
-    
     getCity(city)
-    //searchHistory(city)
     pushHistory(city)
-
+    
     
     
 }
 
-// function searchHistory(city) {
-//     //const searchCities = { city: city}
-//     //pastSearch.push(city);
-//     //localStorage.setItem("cities", JSON.stringify(pastSearch))
-//     const searchHistory = $("#search-history")
-//     searchHistory.empty()
-//     const searchBtn = $("<button>")
-//     searchBtn.attr(city)
-//     searchBtn.text(city)
-//     searchHistory.append(searchBtn) 
-    
-// }
+
 //add cities to past search
 function pushHistory(city) {
-        //const recentCity = [city];
-        pastSearch.unshift(city);
-        localStorage.setItem("cities", JSON.stringify(pastSearch));
-        historyList()
-        
-    }
+            pastSearch.unshift(city);
+            localStorage.setItem("cities", JSON.stringify(pastSearch));
+            historyList()
+    
+        }
     
     
     //loop through past search history and create a button
@@ -52,14 +30,21 @@ function pushHistory(city) {
         const searchHistory = $("#search-history")
         searchHistory.empty()
         pastSearch.forEach((city) => {
-            let searchBtn = $("<button>").addClass("has-text-black button is-info")
-            searchBtn.attr(city)
+            let searchBtn = $("<button>").addClass("has-text-black button is-info m-1")
+            searchBtn.attr("city", city)
             searchBtn.text(city)
             searchHistory.append(searchBtn)     
         });
         
     }
+
+//recalls past searches
+$("#search-history").on("click", "button", function() {
+    const savedCity = $(this).attr("city");
+    getCity(savedCity)
+});
     
+ //creates all the data for each city.   
     function getCity(city) {
         
         console.log(city)
