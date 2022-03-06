@@ -50,7 +50,7 @@ $("#search-history").on("click", "button", function() {
         
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`, {
             
-            //method: "GET"
+            method: "GET"
         })
         
         .then((response) => response.json())
