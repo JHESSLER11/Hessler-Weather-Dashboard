@@ -68,15 +68,43 @@ function getCity(city) {
         .then((dayForecast) => {
             
             console.log(dayForecast)
-            const tomDate = moment().add(1, 'days').format("MM/DD/YYYY")
-            $("#date1").text(tomDate)
+            //day 1
+            $("#date1").text(moment().add(1, 'days').format("MM/DD/YYYY"))
             $("#icon1").attr("src", `https://openweathermap.org/img/wn/${dayForecast.daily[1].weather[0].icon}@2x.png`)
             $("#temp1").text(`Temperature: ${dayForecast.daily[1].temp.day} F`);
             $("#humid1").text(`Humidity: ${dayForecast.daily[1].humidity}%`);
             $("#wind1").text(`Wind Speed: ${dayForecast.daily[1].wind_speed} MPH`);
 
+            //day 2
+            $("#date2").text(moment().add(2, 'days').format("MM/DD/YYYY"))
+            $("#icon2").attr("src", `https://openweathermap.org/img/wn/${dayForecast.daily[2].weather[0].icon}@2x.png`)
+            $("#temp2").text(`Temperature: ${dayForecast.daily[2].temp.day} F`);
+            $("#humid2").text(`Humidity: ${dayForecast.daily[2].humidity}%`);
+            $("#wind2").text(`Wind Speed: ${dayForecast.daily[2].wind_speed} MPH`);
+
+            //day 3
+            $("#date3").text(moment().add(3, 'days').format("MM/DD/YYYY"))
+            $("#icon3").attr("src", `https://openweathermap.org/img/wn/${dayForecast.daily[3].weather[0].icon}@2x.png`)
+            $("#temp3").text(`Temperature: ${dayForecast.daily[3].temp.day} F`);
+            $("#humid3").text(`Humidity: ${dayForecast.daily[3].humidity}%`);
+            $("#wind3").text(`Wind Speed: ${dayForecast.daily[3].wind_speed} MPH`);
+
+            //day 4
+            $("#date4").text(moment().add(2, 'days').format("MM/DD/YYYY"))
+            $("#icon4").attr("src", `https://openweathermap.org/img/wn/${dayForecast.daily[4].weather[0].icon}@2x.png`)
+            $("#temp4").text(`Temperature: ${dayForecast.daily[4].temp.day} F`);
+            $("#humid4").text(`Humidity: ${dayForecast.daily[4].humidity}%`);
+            $("#wind4").text(`Wind Speed: ${dayForecast.daily[4].wind_speed} MPH`);
+
+            //day 5
+            $("#date5").text(moment().add(2, 'days').format("MM/DD/YYYY"))
+            $("#icon5").attr("src", `https://openweathermap.org/img/wn/${dayForecast.daily[5].weather[0].icon}@2x.png`)
+            $("#temp5").text(`Temperature: ${dayForecast.daily[5].temp.day} F`);
+            $("#humid5").text(`Humidity: ${dayForecast.daily[5].humidity}%`);
+            $("#wind5").text(`Wind Speed: ${dayForecast.daily[5].wind_speed} MPH`);
+
         for (let index = 1; index <= 6; index++) {
-           const data = moment().add(1, 'days').calender()
+           
            
             
         }
