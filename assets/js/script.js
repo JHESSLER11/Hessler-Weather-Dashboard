@@ -17,7 +17,7 @@ function citySearch(event) {
 }
 
 
-//add cities to past search
+//add cities to past search and run the history list
 function pushHistory(city) {
             pastSearch.unshift(city);
             localStorage.setItem("cities", JSON.stringify(pastSearch));
@@ -48,11 +48,9 @@ $("#search-history").on("click", "button", function() {
  //creates all the data for each city.   
     function getCity(city) {
         
-        console.log(city)
-        
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`, {
             
-            method: "GET"
+            //method: "GET"
         })
         
         .then((response) => response.json())
