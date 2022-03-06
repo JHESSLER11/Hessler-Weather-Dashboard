@@ -48,10 +48,7 @@ $("#search-history").on("click", "button", function() {
  //creates all the data for each city.   
     function getCity(city) {
         
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`, {
-            
-            method: "GET"
-        })
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`)
         
         .then((response) => response.json())
         // calls the data for the current day
