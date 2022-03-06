@@ -1,5 +1,5 @@
 const apiKey = "56cd55bcb41fb1d5dd1158c24bb37cc0";
-const pastSearch = [];
+const pastSearch = JSON.parse(localStorage.getItem('cities')) || [];
 console.log(pastSearch)
 
 $("#aside-container").on("submit", citySearch);
@@ -8,28 +8,48 @@ $("#aside-container").on("submit", citySearch);
 function citySearch(event) {
     event.preventDefault();
 
-    const city = $("#inputCity").val()
+    const city = $("#inputCity").val().trim()
     $("#inputCity").val("");
+    //pastSearch.push(city)
     
     getCity(city)
     searchHistory(city)
+    pushHistory(city)
+    
     
 }
 
 function searchHistory(city) {
-    pastSearch.push(city)
-    localStorage.setItem("cities", JSON.stringify(city))
-
-    let searchBtn = $("<button>").attr('id', '#search-history')
+    //const searchCities = { city: city}
+    //pastSearch.push(city);
+    //localStorage.setItem("cities", JSON.stringify(pastSearch))
+    const searchHistory = $("#search-history")
+    searchHistory.empty()
+    const searchBtn = $("<button>")
     searchBtn.attr(city)
     searchBtn.text(city)
-    pastSearch.append(searchBtn)
+    searchHistory.append(searchBtn) 
     
-
-
 }
 
+function pushHistory(city) {
+    if (!pastSearch.includes(city)) {
+      pastSearch.push(city);
+      localStorage.setItem('cities', JSON.stringify(pastSearch));
+      historyList();
+    }
+  }
 
+
+function historyList() {
+for (let index = 0; index < pastSearch.length; index++) {
+    const searchBtn = $("<button>")
+    searchBtn.attr(pastSearch)
+    searchBtn.text(pastSearch)
+    $("#search-history").append(searchBtn)     
+}
+
+}
 
 function getCity(city) {
 
