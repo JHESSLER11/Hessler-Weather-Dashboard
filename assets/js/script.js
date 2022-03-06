@@ -32,8 +32,12 @@ function getCity(city) {
     .then((response) => response.json())
     // calls the data for the current day
     .then((data) => {
+
+        const todaysDate = moment().format("MM/DD/YYYY")
+        console.log(todaysDate)
         //console.log("weather: ", data)
-        $("#cityName").text(data.name);
+        $("#cityName").text(`${data.name} ${todaysDate}`);
+        //$("#cityName").append(todaysDate);
         $("#temp").text(`Temperature: ${data.main.temp} F`);
         $("#humid").text(`Humidity: ${data.main.humidity}%`);
         $("#wind").text(`Wind Speed: ${data.wind.speed} MPH`);
@@ -58,15 +62,22 @@ function getCity(city) {
             
         })
         // fetching 5 day forecast
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&units=imperial&appid=${apiKey}`)
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&units=imperial&appid=${apiKey}`)
         
         .then((response) => response.json())
         .then((dayForecast) => {
-        
+            
             console.log(dayForecast)
+            const tomDate = moment().add(1, 'days').format("MM/DD/YYYY")
+            $("#date1").text(tomDate)
+            $("#icon1").attr("src", `https://openweathermap.org/img/wn/${dayForecast.daily[1].weather[0].icon}@2x.png`)
+            $("#temp1").text(`Temperature: ${dayForecast.daily[1].temp.day} F`);
+            $("#humid1").text(`Humidity: ${dayForecast.daily[1].humidity}%`);
+            $("#wind1").text(`Wind Speed: ${dayForecast.daily[1].wind_speed} MPH`);
 
         for (let index = 1; index <= 6; index++) {
            const data = moment().add(1, 'days').calender()
+           
             
         }
         })
