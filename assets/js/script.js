@@ -1,6 +1,7 @@
 const apiKey = "56cd55bcb41fb1d5dd1158c24bb37cc0";
 let pastSearch = []
 
+//searches for selected city
 $("#aside-container").on("submit", citySearch);
 
 //handles the search
@@ -60,9 +61,7 @@ $("#search-history").on("click", "button", function() {
             
             const todaysDate = moment().format("MM/DD/YYYY")
             console.log(todaysDate)
-            //console.log("weather: ", data)
             $("#cityName").text(`${data.name} ${todaysDate}`);
-            //$("#cityName").append(todaysDate);
             $("#temp").text(`Temperature: ${data.main.temp} F`);
             $("#humid").text(`Humidity: ${data.main.humidity}%`);
             $("#wind").text(`Wind Speed: ${data.wind.speed} MPH`);
@@ -92,7 +91,7 @@ $("#search-history").on("click", "button", function() {
             .then((response) => response.json())
             .then((dayForecast) => {
                 
-                console.log(dayForecast)
+    
                 //day 1
                 $("#date1").text(moment().add(1, 'days').format("MM/DD/YYYY"))
                 $("#icon1").attr("src", `https://openweathermap.org/img/wn/${dayForecast.daily[1].weather[0].icon}@2x.png`)
