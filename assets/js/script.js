@@ -10,12 +10,23 @@ function citySearch(event) {
 
     const city = $("#inputCity").val()
     $("#inputCity").val("");
-    console.log(city)
-    
-    pastSearch.push(city);
     
     getCity(city)
+    searchHistory(city)
     
+}
+
+function searchHistory(city) {
+    pastSearch.push(city)
+    localStorage.setItem("cities", JSON.stringify(city))
+
+    let searchBtn = $("<button>").attr('id', '#search-history')
+    searchBtn.attr(city)
+    searchBtn.text(city)
+    pastSearch.append(searchBtn)
+    
+
+
 }
 
 
@@ -103,11 +114,6 @@ function getCity(city) {
             $("#humid5").text(`Humidity: ${dayForecast.daily[5].humidity}%`);
             $("#wind5").text(`Wind Speed: ${dayForecast.daily[5].wind_speed} MPH`);
 
-        for (let index = 1; index <= 6; index++) {
-           
-           
-            
-        }
         })
         .catch((error) => {});
         
