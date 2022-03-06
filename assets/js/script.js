@@ -1,5 +1,8 @@
 const apiKey = "56cd55bcb41fb1d5dd1158c24bb37cc0";
-const pastSearch = JSON.parse(localStorage.getItem('cities')) || [];
+let pastSearch = JSON.parse(localStorage.getItem("cities")) 
+if (!pastSearch) {
+    pastSearch =[]
+} 
 console.log(pastSearch)
 
 $("#aside-container").on("submit", citySearch);
@@ -34,8 +37,11 @@ function citySearch(event) {
 // }
 //add cities to past search
 function pushHistory(city) {
-    //pastSearch.push(city)
-      localStorage.setItem('cities', JSON.stringify(pastSearch));
+        //const recentCity = [city];
+        pastSearch.push({city});
+        localStorage.setItem("cities", JSON.stringify(pastSearch));
+        historyList()
+        
     }
     
     
@@ -143,7 +149,6 @@ function pushHistory(city) {
         
     }
     
-    historyList();
     
 
 
