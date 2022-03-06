@@ -34,7 +34,6 @@ function getCity(city) {
     .then((data) => {
         //console.log("weather: ", data)
         $("#cityName").text(data.name);
-        //$("#cityName").attr(src = "https://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png");
         $("#temp").text(`Temperature: ${data.main.temp} F`);
         $("#humid").text(`Humidity: ${data.main.humidity}%`);
         $("#wind").text(`Wind Speed: ${data.wind.speed} MPH`);
