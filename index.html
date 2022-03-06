@@ -13,16 +13,16 @@
 
 <body>
     <header>
-        <h1> Hessler Weather Dashboard</h1>
+        <h1 class="is-size-1 has-text-black has-text-centered has-background-info"> Hessler Weather Dashboard</h1>
     </header>
     <div class="columns">
     <!-- Search container with search history -->
         <aside id="aside-container">
             <div id="serach-container" class="column">
                 <form id="form" class="column">
-                    <h2>Search for a City</h2>
+                    <h2 class="is-size-4 has-text-black">Search for a City</h2>
                     <input type="text" placeholder="Search City" id="inputCity">
-                    <button type="submit" id="searchBtn">Search</button>
+                    <button type="submit" id="searchBtn" class="has-text-black button is-info">Search</button>
                 </form>
             </div>
             <div id="search-history"></div>
@@ -41,9 +41,9 @@
         <!-- 5 day forecast -->
 
         <div id="forecast-contianer">
-            <h2 class="has-text-centered is-underlined mb-4 has-text-black">5 Day Forecast</h2>
+            <h2 class="has-text-centered is-underlined mb-4 has-text-black is-size-2">5 Day Forecast</h2>
             <div id="5day-container" class="columns is-justify-content-flex-end">
-                <div id="day1" class="column has-background-info has-text-black m-2">
+                <div id="day1" class="column has-background-info has-text-black m-1">
                     <p id="date1"></p>
                     <p><img id="icon1" src=""></p>
                     <p id="temp1">Temperature: </p>
@@ -51,7 +51,7 @@
                     <p id="wind1">Wind Speed: </p>
                 </div>
 
-                <div id="day2" class="column has-background-info has-text-black m-2">
+                <div id="day2" class="column has-background-info has-text-black m-1">
                     <p id="date2"></p>
                     <p><img id="icon2" src=""></p>
                     <p id="temp2">Temperature: </p>
@@ -59,7 +59,7 @@
                     <p id="wind2">Wind Speed: </p>
                 </div>
 
-                <div id="day3" class="column has-background-info has-text-black m-2">
+                <div id="day3" class="column has-background-info has-text-black m-1">
                     <p id="date3"></p>
                     <p><img id="icon3" src=""></p>
                     <p id="temp3">Temperature: </p>
@@ -67,7 +67,7 @@
                     <p id="wind3">Wind Speed: </p>
                 </div>
 
-                <div id="day4" class="column has-background-info has-text-black m-2">
+                <div id="day4" class="column has-background-info has-text-black m-1">
                     <p id="date4"></p>
                     <p><img id="icon4" src=""></p>
                     <p id="temp4">Temperature: </p>
@@ -75,7 +75,7 @@
                     <p id="wind4">Wind Speed: </p>
                 </div>
 
-                <div id="day5" class="column has-background-info has-text-black m-2">
+                <div id="day5" class="column has-background-info has-text-black m-1">
                     <p id="date5"></p>
                     <p><img id="icon5" src=""></p>
                     <p id="temp5">Temperature: </p>
